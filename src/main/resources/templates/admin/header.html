@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<el-header id="header" th:fragment="header"
+           :class="{handleCloseHeader:config.isCollapse,handleOpenHeader:!config.isCollapse}">
+    <el-menu
+            class="el-menu-demo"
+            mode="horizontal"
+            @select="handleSelect">
+        <el-menu-item index="0" id="tags" @click="config.isCollapse = !config.isCollapse">
+            <i class="fa fa-bars fa-fw" v-if="config.isCollapse"></i>
+            <i v-if="!config.isCollapse" class="fa fa-th-large fa-fw"></i>
+        </el-menu-item>
+        <el-menu-item id="author" index="8">
+            <img class="el-tooltip" th:src="@{/public/author.png}"/>
+            <el-dropdown>
+                  <span class="el-dropdown-link">
+                    {{config.token.name}}<i class="el-icon-arrow-down el-icon--right"></i>
+                  </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item><a th:href="@{/admin}">首页</a></el-dropdown-item>
+                    <el-dropdown-item><a th:href="@{/admin/user}">个人信息</a></el-dropdown-item>
+                    <el-dropdown-item><a href="https://github.com/TyCoding" target="_blank">GitHub</a>
+                    </el-dropdown-item>
+                    <br/>
+                    <el-dropdown-item><a th:href="@{/logout}">退出</a></el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
+        </el-menu-item>
+    </el-menu>
+</el-header>
+
+</body>
+</html>

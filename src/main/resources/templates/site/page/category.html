@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 公共的CSS库 -->
+<head th:include="/site/common/common_head :: commonHead"></head>
+<title>[[${category}]] | Tumo Blog</title>
+<body class="bg-grey" gtools_scp_screen_capture_injected="true">
+
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+
+<!-- header -->
+<div th:replace="site/header :: header"></div>
+<!-- main -->
+<div class="main-content archive-page clearfix">
+    <div class="categorys-item">
+        <div class="categorys-title">
+            分类： [[${category}]]
+        </div>
+        <div class="post-lists">
+            <div class="post-lists-body">
+                <div class="post-list-item" th:each="item : ${article}">
+                    <div class="post-list-item-container">
+                        <div class="item-label">
+                            <div class="item-title">
+                                <a th:href="'/article/' + ${item.id}" th:text="${item.title}"></a>
+                            </div>
+                            <div class="item-meta clearfix">
+                                <div class="item-meta-date">发布于 [[${#dates.format(item.publishTime, 'yyyy-MM-dd')}]]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style rel="stylesheet">
+    footer {
+        position: fixed !important;
+        z-index: 2 !important;
+        right: 0 !important;
+        bottom: 48px !important;
+        left: 0 !important;
+    }
+</style>
+<!-- footer -->
+<div th:replace="site/footer :: footer"></div>
+<!-- 公共的JS库 -->
+<div th:include="site/common/onload_js ::onloadJS"></div>
+</body>
+</html>
