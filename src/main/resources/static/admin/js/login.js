@@ -26,7 +26,7 @@ new Vue({
                 text: '拼命加载中',
                 spinner: 'el-icon-loading',
             });
-            setTimeout(() = > {
+            setTimeout(() => {
                 this.loading.close();
         },
             2000
@@ -35,7 +35,7 @@ new Vue({
         },
 
         submitForm(login) {
-            this.$refs[login].validate((valid) = > {
+            this.$refs[login].validate((valid) => {
                 if(valid) {
                     this.loadings(); //加载动画
                     //提交表单
@@ -43,7 +43,7 @@ new Vue({
                         username: this.login.username,
                         password: this.login.password,
                         remember: this.login.remember
-                    }).then(result = > {
+                    }).then(result => {
                         if(result.body.success
                 )
                     {
