@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import loadingVue from './loading.vue';
-import {addClass, removeClass, getStyle} from 'element-ui/src/utils/dom';
+import {addClass, getStyle, removeClass} from 'element-ui/src/utils/dom';
 import {PopupManager} from 'element-ui/src/utils/popup';
 import afterLeave from 'element-ui/src/utils/after-leave';
 import merge from 'element-ui/src/utils/merge';
@@ -24,7 +24,7 @@ LoadingConstructor.prototype.close = function () {
     if (this.fullscreen) {
         fullscreenLoading = undefined;
     }
-    afterLeave(this, _ = > {
+    afterLeave(this, _ => {
         const target = this.fullscreen || this.body
             ? document.body
             : this.target;
@@ -51,7 +51,7 @@ const addStyle = (options, parent, instance) =
         maskStyle.zIndex = PopupManager.nextZIndex();
     } else if (options.body) {
         instance.originalPosition = getStyle(document.body, 'position');
-        ['top', 'left'].forEach(property = > {
+        ['top', 'left'].forEach(property => {
             let scroll = property === 'top' ? 'scrollTop' : 'scrollLeft';
         maskStyle[property] = options.target.getBoundingClientRect()[property] +
             document.body[scroll] +
@@ -59,14 +59,14 @@ const addStyle = (options, parent, instance) =
             'px';
     })
         ;
-        ['height', 'width'].forEach(property = > {
+        ['height', 'width'].forEach(property => {
             maskStyle[property] = options.target.getBoundingClientRect()[property] + 'px';
     })
         ;
     } else {
         instance.originalPosition = getStyle(parent, 'position');
     }
-    Object.keys(maskStyle).forEach(property = > {
+    Object.keys(maskStyle).forEach(property => {
         instance.$el.style[property] = maskStyle[property];
 })
     ;
@@ -105,7 +105,7 @@ const Loading = (options = {}) =
         addClass(parent, 'el-loading-parent--hidden');
     }
     parent.appendChild(instance.$el);
-    Vue.nextTick(() = > {
+    Vue.nextTick(() => {
         instance.visible = true;
 })
     ;

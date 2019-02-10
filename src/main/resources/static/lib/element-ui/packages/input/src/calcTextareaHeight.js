@@ -44,7 +44,7 @@ function calculateNodeStyling(targetElement) {
     );
 
     const contextStyle = CONTEXT_STYLE
-        .map(name = > `${name}:${style.getPropertyValue(name)}`
+        .map(name => `${name}:${style.getPropertyValue(name)}`
 )
 .
     join(';');

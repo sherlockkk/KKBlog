@@ -10,19 +10,19 @@ export default {
         if (this.summaryMethod) {
             sums = this.summaryMethod({columns: this.columns, data: this.store.states.data});
         } else {
-            this.columns.forEach((column, index) = > {
+            this.columns.forEach((column, index) => {
                 if(index === 0
         )
             {
                 sums[index] = this.sumText;
                 return;
             }
-            const values = this.store.states.data.map(item = > Number(item[column.property])
+            const values = this.store.states.data.map(item => Number(item[column.property])
         )
             ;
             const precisions = [];
             let notNumber = true;
-            values.forEach(value = > {
+            values.forEach(value => {
                 if(
             !isNaN(value)
         )
@@ -35,7 +35,7 @@ export default {
             ;
             const precision = Math.max.apply(null, precisions);
             if (!notNumber) {
-                sums[index] = values.reduce((prev, curr) = > {
+                sums[index] = values.reduce((prev, curr) => {
                     const value = Number(curr);
                 if (!isNaN(value)) {
                     return parseFloat((prev + curr).toFixed(Math.min(precision, 20)));
@@ -62,7 +62,7 @@ export default {
         border = "0" >
             < colgroup >
             {
-                this._l(this.columns, column = > < col name = {column.id}
+                this._l(this.columns, column => < col name = {column.id}
         />)
     }
         {
@@ -80,7 +80,7 @@ export default {
         = {[{'has-gutter': this.hasGutter}]} >
             < tr >
             {
-                this._l(this.columns, (column, cellIndex) = >
+                this._l(this.columns, (column, cellIndex) =>
                     < td
                 colspan = {column.colSpan}
                 rowspan = {column.rowSpan}

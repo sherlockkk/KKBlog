@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import debounce from 'throttle-debounce/debounce';
 import merge from 'element-ui/src/utils/merge';
-import {hasClass, addClass, removeClass} from 'element-ui/src/utils/dom';
-import {orderBy, getColumnById, getRowIdentity} from './util';
+import {addClass, hasClass, removeClass} from 'element-ui/src/utils/dom';
+import {getColumnById, getRowIdentity, orderBy} from './util';
 
 const sortData = (data, states) =
 >
@@ -17,7 +17,7 @@ const sortData = (data, states) =
 
 const getKeysMap = function (array, rowKey) {
     const arrayMap = {};
-    (array || []).forEach((row, index) = > {
+    (array || []).forEach((row, index) => {
         arrayMap[getRowIdentity(row, rowKey)] = {row, index};
 })
     ;
@@ -128,13 +128,13 @@ TableStore.prototype.mutations = {
         const dataInstanceChanged = states._data !== data;
         states._data = data;
 
-        Object.keys(states.filters).forEach((columnId) = > {
+        Object.keys(states.filters).forEach((columnId) => {
             const values = states.filters[columnId];
         if (!values || values.length === 0) return;
         const column = getColumnById(this.states, columnId);
         if (column && column.filterMethod) {
-            data = data.filter((row) = > {
-                return values.some(value = > column.filterMethod.call(null, value, row, column)
+            data = data.filter((row) => {
+                return values.some(value => column.filterMethod.call(null, value, row, column)
         )
             ;
         })
@@ -162,7 +162,7 @@ TableStore.prototype.mutations = {
                 const selection = states.selection;
                 const selectedMap = getKeysMap(selection, rowKey);
 
-                states.data.forEach((row) = > {
+                states.data.forEach((row) => {
                     const rowId = getRowIdentity(row, rowKey);
                 const rowInfo = selectedMap[rowId];
                 if (rowInfo) {
@@ -196,7 +196,7 @@ TableStore.prototype.mutations = {
             this.states.expandRows = [];
         }
 
-        Vue.nextTick(() = > this.table.updateScrollY()
+        Vue.nextTick(() => this.table.updateScrollY()
     )
         ;
     },
@@ -208,12 +208,12 @@ TableStore.prototype.mutations = {
         if ($el && highlightCurrentRow) {
             const data = states.data;
             const tr = $el.querySelector('tbody').children;
-            const rows = [].filter.call(tr, row = > hasClass(row, 'el-table__row')
+            const rows = [].filter.call(tr, row => hasClass(row, 'el-table__row')
         )
             ;
             const row = rows[data.indexOf(states.currentRow)];
 
-            [].forEach.call(rows, row = > removeClass(row, 'current-row')
+            [].forEach.call(rows, row => removeClass(row, 'current-row')
         )
             ;
             addClass(row, 'current-row');
@@ -227,7 +227,7 @@ TableStore.prototype.mutations = {
             });
         }
 
-        Vue.nextTick(() = > this.table.updateScrollY()
+        Vue.nextTick(() => this.table.updateScrollY()
     )
         ;
     },
@@ -237,7 +237,7 @@ TableStore.prototype.mutations = {
         if (prop) {
             states.sortProp = prop;
             states.sortOrder = order || 'ascending';
-            Vue.nextTick(() = > {
+            Vue.nextTick(() => {
                 for(let i = 0, length = states.columns.length;
             i < length;
             i++
@@ -275,13 +275,13 @@ TableStore.prototype.mutations = {
 
         let data = states._data;
 
-        Object.keys(states.filters).forEach((columnId) = > {
+        Object.keys(states.filters).forEach((columnId) => {
             const values = states.filters[columnId];
         if (!values || values.length === 0) return;
         const column = getColumnById(this.states, columnId);
         if (column && column.filterMethod) {
-            data = data.filter((row) = > {
-                return values.some(value = > column.filterMethod.call(null, value, row, column)
+            data = data.filter((row) => {
+                return values.some(value => column.filterMethod.call(null, value, row, column)
         )
             ;
         })
@@ -297,7 +297,7 @@ TableStore.prototype.mutations = {
             this.table.$emit('filter-change', filters);
         }
 
-        Vue.nextTick(() = > this.table.updateScrollY()
+        Vue.nextTick(() => this.table.updateScrollY()
     )
         ;
     },
@@ -379,7 +379,7 @@ TableStore.prototype.mutations = {
             : !(states.isAllSelected || selection.length);
         let selectionChanged = false;
 
-        data.forEach((item, index) = > {
+        data.forEach((item, index) => {
             if(states.selectable
     )
         {
@@ -409,7 +409,7 @@ const doFlattenColumns = (columns) =
 >
 {
     const result = [];
-    columns.forEach((column) = > {
+    columns.forEach((column) => {
         if(column.children
 )
     {
@@ -428,10 +428,10 @@ else
 TableStore.prototype.updateColumns = function () {
     const states = this.states;
     const _columns = states._columns || [];
-    states.fixedColumns = _columns.filter((column) = > column.fixed === true || column.fixed === 'left'
+    states.fixedColumns = _columns.filter((column) => column.fixed === true || column.fixed === 'left'
 )
     ;
-    states.rightFixedColumns = _columns.filter((column) = > column.fixed === 'right'
+    states.rightFixedColumns = _columns.filter((column) => column.fixed === 'right'
 )
     ;
 
@@ -440,7 +440,7 @@ TableStore.prototype.updateColumns = function () {
         states.fixedColumns.unshift(_columns[0]);
     }
 
-    const notFixedColumns = _columns.filter(column = > !column.fixed
+    const notFixedColumns = _columns.filter(column => !column.fixed
 )
     ;
     states.originColumns = [].concat(states.fixedColumns).concat(notFixedColumns).concat(states.rightFixedColumns);
@@ -479,7 +479,7 @@ TableStore.prototype.setExpandRowKeys = function (rowKeys) {
     const rowKey = this.states.rowKey;
     if (!rowKey) throw new Error('[Table] prop row-key should not be empty.');
     const keysMap = getKeysMap(data, rowKey);
-    rowKeys.forEach((key) = > {
+    rowKeys.forEach((key) => {
         const info = keysMap[key];
     if (info) {
         expandRows.push(info.row);
@@ -529,13 +529,13 @@ TableStore.prototype.cleanSelection = function () {
             }
         }
     } else {
-        deleted = selection.filter((item) = > {
+        deleted = selection.filter((item) => {
             return data.indexOf(item) === -1;
     })
         ;
     }
 
-    deleted.forEach((deletedItem) = > {
+    deleted.forEach((deletedItem) => {
         selection.splice(selection.indexOf(deletedItem), 1);
 })
     ;
@@ -557,7 +557,7 @@ TableStore.prototype.clearFilter = function () {
     const keys = Object.keys(panels);
     if (!keys.length) return;
 
-    keys.forEach(key = > {
+    keys.forEach(key => {
         panels[key].filteredValue = [];
 })
     ;

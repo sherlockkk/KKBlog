@@ -80,7 +80,7 @@ var vm = new Vue({
         },
         //条件查询
         search(pageCode, pageSize) {
-            this.$http.post('/comments/findByPage?pageSize=' + pageSize + '&pageCode=' + pageCode, this.config.searchEntity).then(result = > {
+            this.$http.post('/comments/findByPage?pageSize=' + pageSize + '&pageCode=' + pageCode, this.config.searchEntity).then(result => {
                 console.log(result);
             this.entity.comments = result.body.rows;
             this.pageConf.totalPage = result.body.total;
@@ -114,9 +114,9 @@ var vm = new Vue({
                 cancelButtonText: '取消',
                 type: 'warning',
                 center: true
-            }).then(() = > {
+            }).then(() => {
                 //调用删除的接口(这里必须将数据转换成JSON格式，不然接收不到值，并且后端要用@RequestBody注解标识)
-                this.$http.post('/comments/delete', JSON.stringify(ids)).then(result = > {
+                this.$http.post('/comments/delete', JSON.stringify(ids)).then(result => {
                     if(result.body.success
         )
             {
@@ -151,7 +151,7 @@ var vm = new Vue({
         })
             ;
         }).
-            catch(() = > {
+            catch(() => {
                 this.$message({
                     type: 'info',
                     message: '已取消删除',
@@ -173,7 +173,7 @@ var vm = new Vue({
         //批量删除按钮（checkbox）
         deleteSelect(rows) {
             if (rows) {
-                rows.forEach(row = > {
+                rows.forEach(row => {
                     this.config.selectIds.push(row.id);
                 this.$refs.entity.comments.toggleRowSelection(row);
             })
@@ -187,7 +187,7 @@ var vm = new Vue({
 
         init() {
             //已登录用户名
-            this.$http.get('/admin/getName').then(result = > {
+            this.$http.get('/admin/getName').then(result => {
                 this.config.token.name = result.bodyText;
         })
             ;

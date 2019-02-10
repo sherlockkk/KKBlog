@@ -7,9 +7,9 @@ const Menu = function (domNode) {
 
 Menu.prototype.init = function () {
     let menuChildren = this.domNode.childNodes;
-    [].filter.call(menuChildren, child = > child.nodeType === 1
+    [].filter.call(menuChildren, child => child.nodeType === 1
 ).
-    forEach(child = > {
+    forEach(child => {
         new MenuItem(child); // eslint-disable-line
 })
     ;

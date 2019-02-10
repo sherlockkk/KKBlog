@@ -30,7 +30,7 @@ export default function (Vue) {
             args = {};
         }
 
-        return string.replace(RE_NARGS, (match, prefix, i, index) = > {
+        return string.replace(RE_NARGS, (match, prefix, i, index) => {
             let result;
 
         if (string[index - 1] === '{' &&

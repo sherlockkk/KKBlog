@@ -214,9 +214,9 @@ export default class Color {
 
         if (value.indexOf('hsl') !== -1) {
             const parts = value.replace(/hsla|hsl|\(|\)/gm, '')
-                .split(/\s|,/g).filter((val) = > val !== ''
+                .split(/\s|,/g).filter((val) => val !== ''
         ).
-            map((val, index) = > index > 2 ? parseFloat(val) : parseInt(val, 10)
+            map((val, index) => index > 2 ? parseFloat(val) : parseInt(val, 10)
         )
             ;
 
@@ -231,9 +231,9 @@ export default class Color {
             }
         } else if (value.indexOf('hsv') !== -1) {
             const parts = value.replace(/hsva|hsv|\(|\)/gm, '')
-                .split(/\s|,/g).filter((val) = > val !== ''
+                .split(/\s|,/g).filter((val) => val !== ''
         ).
-            map((val, index) = > index > 2 ? parseFloat(val) : parseInt(val, 10)
+            map((val, index) => index > 2 ? parseFloat(val) : parseInt(val, 10)
         )
             ;
 
@@ -247,9 +247,9 @@ export default class Color {
             }
         } else if (value.indexOf('rgb') !== -1) {
             const parts = value.replace(/rgba|rgb|\(|\)/gm, '')
-                .split(/\s|,/g).filter((val) = > val !== ''
+                .split(/\s|,/g).filter((val) => val !== ''
         ).
-            map((val, index) = > index > 2 ? parseFloat(val) : parseInt(val, 10)
+            map((val, index) => index > 2 ? parseFloat(val) : parseInt(val, 10)
         )
             ;
 

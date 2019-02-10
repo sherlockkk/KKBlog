@@ -57,7 +57,7 @@ var vm = new Vue({
 
         //获取当前用户信息
         getUserInfo() {
-            this.$http.get('/user/getUserInfo').then(result = > {
+            this.$http.get('/user/getUserInfo').then(result => {
                 this.$refs.user.resetFields(); //清空校验状态
             this.$refs.pass.resetFields(); //清空校验状态
             this.entity.user.id = result.body.id;
@@ -78,7 +78,7 @@ var vm = new Vue({
                 });
             } else {
                 console.log(this.entity.user);
-                this.$http.post('/user/update', JSON.stringify(this.entity.user)).then(result = > {
+                this.$http.post('/user/update', JSON.stringify(this.entity.user)).then(result => {
                     if(result.body.success
             )
                 {
@@ -128,7 +128,7 @@ var vm = new Vue({
                 this.clearPass();
             } else {
                 this.entity.pass.username = this.entity.user.username;
-                this.$http.post('/user/update', JSON.stringify(this.entity.pass)).then(result = > {
+                this.$http.post('/user/update', JSON.stringify(this.entity.pass)).then(result => {
                     if(result.body.success
             )
                 {
@@ -163,7 +163,7 @@ var vm = new Vue({
 
         init() {
             //已登录用户名
-            this.$http.get('/admin/getName').then(result = > {
+            this.$http.get('/admin/getName').then(result => {
                 this.config.token.name = result.bodyText;
         })
             ;

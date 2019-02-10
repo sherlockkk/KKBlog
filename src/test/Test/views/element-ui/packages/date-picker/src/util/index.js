@@ -7,13 +7,13 @@ const getI18nSettings = () =
 >
 {
     return {
-        dayNamesShort: weeks.map(week = > t(`el.datepicker.weeks.${week}`)
+        dayNamesShort: weeks.map(week => t(`el.datepicker.weeks.${week}`)
 ),
-    dayNames: weeks.map(week = > t(`el.datepicker.weeks.${week}`)
+    dayNames: weeks.map(week => t(`el.datepicker.weeks.${week}`)
 ),
-    monthNamesShort: months.map(month = > t(`el.datepicker.months.${month}`)
+    monthNamesShort: months.map(month => t(`el.datepicker.months.${month}`)
 ),
-    monthNames: months.map((month, index) = > t(`el.datepicker.month${index + 1}`)
+    monthNames: months.map((month, index) => t(`el.datepicker.month${index + 1}`)
 ),
     amPm: ['am', 'pm']
 }
@@ -120,8 +120,8 @@ export const getRangeHours = function (ranges) {
     const hours = [];
     let disabledHours = [];
 
-    (ranges || []).forEach(range = > {
-        const value = range.map(date = > date.getHours()
+    (ranges || []).forEach(range => {
+        const value = range.map(date => date.getHours()
 )
     ;
 
@@ -144,7 +144,7 @@ export const getRangeHours = function (ranges) {
 
 export const range = function (n) {
     // see https://stackoverflow.com/questions/3746725/create-a-javascript-array-containing-1-n
-    return Array.apply(null, {length: n}).map((_, n) = > n
+    return Array.apply(null, {length: n}).map((_, n) => n
 )
     ;
 };
@@ -183,16 +183,16 @@ export const limitTimeRange = function (date, ranges, format = 'HH:mm:ss') {
 >
     dateUtil.parse(dateUtil.format(date, format), format);
     const ndate = normalizeDate(date);
-    const nranges = ranges.map(range = > range.map(normalizeDate)
+    const nranges = ranges.map(range => range.map(normalizeDate)
 )
     ;
-    if (nranges.some(nrange = > ndate >= nrange[0] && ndate <= nrange[1]))
+    if (nranges.some(nrange => ndate >= nrange[0] && ndate <= nrange[1]))
     return date;
 
     let minDate = nranges[0][0];
     let maxDate = nranges[0][0];
 
-    nranges.forEach(nrange = > {
+    nranges.forEach(nrange => {
         minDate = new Date(Math.min(nrange[0], minDate));
     maxDate = new Date(Math.max(nrange[1], minDate));
 })

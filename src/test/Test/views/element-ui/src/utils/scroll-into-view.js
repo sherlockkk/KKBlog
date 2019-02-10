@@ -14,7 +14,7 @@ export default function scrollIntoView(container, selected) {
         offsetParents.push(pointer);
         pointer = pointer.offsetParent;
     }
-    const top = selected.offsetTop + offsetParents.reduce((prev, curr) = > (prev + curr.offsetTop), 0
+    const top = selected.offsetTop + offsetParents.reduce((prev, curr) => (prev + curr.offsetTop), 0
 )
     ;
     const bottom = top + selected.offsetHeight;

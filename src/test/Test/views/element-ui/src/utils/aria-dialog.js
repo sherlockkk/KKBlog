@@ -69,7 +69,7 @@ aria.Dialog.prototype.removeListeners = function () {
 aria.Dialog.prototype.closeDialog = function () {
     this.removeListeners();
     if (this.focusAfterClosed) {
-        setTimeout(() = > {
+        setTimeout(() => {
             this.focusAfterClosed.focus();
     })
         ;

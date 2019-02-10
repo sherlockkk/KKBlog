@@ -57,7 +57,7 @@ class TableLayout {
         }
         this.height = value;
 
-        if (!el && (value || value === 0)) return Vue.nextTick(() = > this.setHeight(value, prop)
+        if (!el && (value || value === 0)) return Vue.nextTick(() => this.setHeight(value, prop)
     )
         ;
 
@@ -76,7 +76,7 @@ class TableLayout {
     }
 
     updateElsHeight() {
-        if (!this.table.$ready) return Vue.nextTick(() = > this.updateElsHeight()
+        if (!this.table.$ready) return Vue.nextTick(() => this.updateElsHeight()
     )
         ;
         const {headerWrapper, appendWrapper, footerWrapper} = this.table.$refs;
@@ -85,7 +85,7 @@ class TableLayout {
         if (this.showHeader && !headerWrapper) return;
         const headerHeight = this.headerHeight = !this.showHeader ? 0 : headerWrapper.offsetHeight;
         if (this.showHeader && headerWrapper.offsetWidth > 0 && (this.table.columns || []).length > 0 && headerHeight < 2) {
-            return Vue.nextTick(() = > this.updateElsHeight()
+            return Vue.nextTick(() => this.updateElsHeight()
         )
             ;
         }
@@ -106,7 +106,7 @@ class TableLayout {
     getFlattenColumns() {
         const flattenColumns = [];
         const columns = this.table.columns;
-        columns.forEach((column) = > {
+        columns.forEach((column) => {
             if(column.isColumnGroup
     )
         {
@@ -129,11 +129,11 @@ class TableLayout {
         let bodyMinWidth = 0;
 
         const flattenColumns = this.getFlattenColumns();
-        let flexColumns = flattenColumns.filter((column) = > typeof column.width !== 'number'
+        let flexColumns = flattenColumns.filter((column) => typeof column.width !== 'number'
     )
         ;
 
-        flattenColumns.forEach((column) = > { // Clean those columns whose width changed from flex to unflex
+        flattenColumns.forEach((column) => { // Clean those columns whose width changed from flex to unflex
             if(typeof column.width === 'number' && column.realWidth
     )
         column.realWidth = null;
@@ -141,7 +141,7 @@ class TableLayout {
         ;
 
         if (flexColumns.length > 0 && fit) {
-            flattenColumns.forEach((column) = > {
+            flattenColumns.forEach((column) => {
                 bodyMinWidth += column.width || column.minWidth || 80;
         })
             ;
@@ -156,13 +156,13 @@ class TableLayout {
                 if (flexColumns.length === 1) {
                     flexColumns[0].realWidth = (flexColumns[0].minWidth || 80) + totalFlexWidth;
                 } else {
-                    const allColumnsWidth = flexColumns.reduce((prev, column) = > prev + (column.minWidth || 80), 0
+                    const allColumnsWidth = flexColumns.reduce((prev, column) => prev + (column.minWidth || 80), 0
                 )
                     ;
                     const flexWidthPerPixel = totalFlexWidth / allColumnsWidth;
                     let noneFirstWidth = 0;
 
-                    flexColumns.forEach((column, index) = > {
+                    flexColumns.forEach((column, index) => {
                         if(index === 0
                 )
                     return;
@@ -184,7 +184,7 @@ class TableLayout {
             this.bodyWidth = Math.max(bodyMinWidth, bodyWidth);
             this.table.resizeState.width = this.bodyWidth;
         } else {
-            flattenColumns.forEach((column) = > {
+            flattenColumns.forEach((column) => {
                 if(
             !column.width && !column.minWidth
         )
@@ -241,7 +241,7 @@ class TableLayout {
 
     notifyObservers(event) {
         const observers = this.observers;
-        observers.forEach((observer) = > {
+        observers.forEach((observer) => {
             switch(event) {
             case
                 'columns'

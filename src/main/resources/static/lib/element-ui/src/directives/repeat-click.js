@@ -1,4 +1,4 @@
-import {once, on} from 'element-ui/src/utils/dom';
+import {on, once} from 'element-ui/src/utils/dom';
 
 export default {
     bind(el, binding, vnode) {
@@ -18,7 +18,7 @@ export default {
         }
         ;
 
-        on(el, 'mousedown', (e) = > {
+        on(el, 'mousedown', (e) => {
             if(e.button !== 0
     )
         return;

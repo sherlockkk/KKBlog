@@ -71,7 +71,7 @@ export const orderBy = function (array, sortKey, reverse, sortMethod, sortBy) {
             order = a.index - b.index;
         }
         return order * reverse;
-    }).map(item = > item.value
+    }).map(item => item.value
 )
     ;
 };

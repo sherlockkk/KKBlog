@@ -18,7 +18,7 @@ MenuItem.prototype.init = function () {
 
 MenuItem.prototype.addListeners = function () {
     const keys = Utils.keys;
-    this.domNode.addEventListener('keydown', event = > {
+    this.domNode.addEventListener('keydown', event => {
         let prevDef = false;
     switch (event.keyCode) {
         case keys.down:

@@ -5,7 +5,7 @@ export function isVNode(node) {
 };
 
 export function getFirstComponentChild(children) {
-    return children && children.filter(c = > c && c.tag
+    return children && children.filter(c => c && c.tag
 )
     [0];
 };

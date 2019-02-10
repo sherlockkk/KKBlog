@@ -94,7 +94,7 @@ const forced = {
             div
         class
             = {'el-table__expand-icon ' +(expanded ? 'el-table__expand-icon--expanded' : '')}
-            on - click = {e = > proxy.handleExpandClick(row, e)
+            on - click = {e => proxy.handleExpandClick(row, e)
         }>
         <
             i
@@ -217,7 +217,7 @@ export default {
                 return ['ascending', 'descending', null];
             },
             validator(val) {
-                return val.every(order = > ['ascending', 'descending', null].indexOf(order) > -1
+                return val.every(order => ['ascending', 'descending', null].indexOf(order) > -1
             )
                 ;
             }

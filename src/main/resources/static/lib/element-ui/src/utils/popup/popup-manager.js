@@ -88,11 +88,11 @@ const PopupManager = {
         }
         if (modalClass) {
             let classArr = modalClass.trim().split(/\s+/);
-            classArr.forEach(item = > addClass(modalDom, item)
+            classArr.forEach(item => addClass(modalDom, item)
         )
             ;
         }
-        setTimeout(() = > {
+        setTimeout(() => {
             removeClass(modalDom, 'v-modal-enter'
     )
         ;
@@ -125,7 +125,7 @@ const PopupManager = {
             if (topItem.id === id) {
                 if (topItem.modalClass) {
                     let classArr = topItem.modalClass.trim().split(/\s+/);
-                    classArr.forEach(item = > removeClass(modalDom, item)
+                    classArr.forEach(item => removeClass(modalDom, item)
                 )
                     ;
                 }
@@ -148,7 +148,7 @@ const PopupManager = {
             if (this.modalFade) {
                 addClass(modalDom, 'v-modal-leave');
             }
-            setTimeout(() = > {
+            setTimeout(() => {
                 if(modalStack.length === 0
         )
             {

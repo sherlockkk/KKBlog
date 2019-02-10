@@ -40,7 +40,7 @@ public class UserServiceImplTest {
   public void update() {
     User user = new User();
     user.setId(1);
-    user.setUsername("tycoding");
+    user.setUsername("kkblog");
     user.setPassword("123456");
     userService.update(user);
     System.out.println(user.getPassword()); // cb0fc2e6755737a1a363d4f1f30c25e7

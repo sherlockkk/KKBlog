@@ -139,7 +139,7 @@
             "WORDS WORKING-STORAGE WRITE XML XML-CODE " +
             "XML-EVENT XML-NTEXT XML-TEXT ZERO ZERO-FILL ");
 
-        var builtins = makeKeywords("- * ** / + < <= = > >= ");
+        var builtins = makeKeywords("- * ** / + < <= => >= ");
         var tests = {
             digit: /\d/,
             digit_or_colon: /[\d:]/,

@@ -1,4 +1,4 @@
-import {hasClass, addClass, removeClass} from 'element-ui/src/utils/dom';
+import {addClass, hasClass, removeClass} from 'element-ui/src/utils/dom';
 import ElCheckbox from 'element-ui/packages/checkbox';
 import ElTag from 'element-ui/packages/tag';
 import Vue from 'vue';
@@ -9,7 +9,7 @@ const getAllColumns = (columns) =
 >
 {
     const result = [];
-    columns.forEach((column) = > {
+    columns.forEach((column) => {
         if(column.children
 )
     {
@@ -41,7 +41,7 @@ const convertToRows = (originColumns) =
         }
         if (column.children) {
             let colSpan = 0;
-            column.children.forEach((subColumn) = > {
+            column.children.forEach((subColumn) => {
                 traverse(subColumn, column);
             colSpan += subColumn.colSpan;
         })
@@ -53,7 +53,7 @@ const convertToRows = (originColumns) =
     }
     ;
 
-    originColumns.forEach((column) = > {
+    originColumns.forEach((column) => {
         column.level = 1;
     traverse(column);
 })
@@ -66,7 +66,7 @@ const convertToRows = (originColumns) =
 
     const allColumns = getAllColumns(originColumns);
 
-    allColumns.forEach((column) = > {
+    allColumns.forEach((column) => {
         if(
     !column.children
 )
@@ -105,7 +105,7 @@ export default {
         border = "0" >
             < colgroup >
             {
-                this._l(this.columns, column = > < col name = {column.id}
+                this._l(this.columns, column => < col name = {column.id}
         />)
     }
         {
@@ -122,17 +122,17 @@ export default {
     class
         = {[{'is-group': isGroup, 'has-gutter': this.hasGutter}]} >
             {
-                this._l(columnRows, (columns, rowIndex) = >
+                this._l(columnRows, (columns, rowIndex) =>
                     < tr
                 style = {this.getHeaderRowStyle(rowIndex)}
                 class = {this.getHeaderRowClass(rowIndex)}
                 >
                 {
-                    this._l(columns, (column, cellIndex) = >
+                    this._l(columns, (column, cellIndex) =>
                         < th
                     colspan = {column.colSpan}
                     rowspan = {column.rowSpan}
-                    on-mousemove = {($event) = > this.handleMouseMove($event, column)
+                    on-mousemove = {($event) => this.handleMouseMove($event, column)
             }
         on - mouseout = {this.handleMouseOut}
         on - mousedown = {($event) =
@@ -431,7 +431,7 @@ export default {
                 !this.$isServer && filterPanel.$mount(document.createElement('div'));
             }
 
-            setTimeout(() = > {
+            setTimeout(() => {
                 filterPanel.showPopper = true;
         },
             16

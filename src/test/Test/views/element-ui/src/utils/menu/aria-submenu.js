@@ -26,8 +26,8 @@ SubMenu.prototype.gotoSubIndex = function (idx) {
 SubMenu.prototype.addListeners = function () {
     const keys = Utils.keys;
     const parentNode = this.parent.domNode;
-    Array.prototype.forEach.call(this.subMenuItems, el = > {
-        el.addEventListener('keydown', event = > {
+    Array.prototype.forEach.call(this.subMenuItems, el => {
+        el.addEventListener('keydown', event => {
             let prevDef = false;
     switch (event.keyCode) {
         case keys.down:

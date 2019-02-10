@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Loading from './loading.vue';
-import {addClass, removeClass, getStyle} from 'element-ui/src/utils/dom';
+import {addClass, getStyle, removeClass} from 'element-ui/src/utils/dom';
 import {PopupManager} from 'element-ui/src/utils/popup';
 import afterLeave from 'element-ui/src/utils/after-leave';
 
@@ -15,7 +15,7 @@ loadingDirective.install = Vue =
 >
     {
         if (binding.value) {
-            Vue.nextTick(() = > {
+            Vue.nextTick(() => {
                 if(binding.modifiers.fullscreen
         )
             {
@@ -33,7 +33,7 @@ loadingDirective.install = Vue =
                 if (binding.modifiers.body) {
                     el.originalPosition = getStyle(document.body, 'position');
 
-                    ['top', 'left'].forEach(property = > {
+                    ['top', 'left'].forEach(property => {
                         const scroll = property === 'top' ? 'scrollTop' : 'scrollLeft';
                     el.maskStyle[property] = el.getBoundingClientRect()[property] +
                         document.body[scroll] +
@@ -42,7 +42,7 @@ loadingDirective.install = Vue =
                         'px';
                 })
                     ;
-                    ['height', 'width'].forEach(property = > {
+                    ['height', 'width'].forEach(property => {
                         el.maskStyle[property] = el.getBoundingClientRect()[property] + 'px';
                 })
                     ;
@@ -56,7 +56,7 @@ loadingDirective.install = Vue =
         })
             ;
         } else {
-            afterLeave(el.instance, _ = > {
+            afterLeave(el.instance, _ => {
                 el.domVisible = false;
             const target = binding.modifiers.fullscreen || binding.modifiers.body
                 ? document.body
@@ -77,7 +77,7 @@ loadingDirective.install = Vue =
 >
     {
         if (!el.domVisible && getStyle(el, 'display') !== 'none' && getStyle(el, 'visibility') !== 'hidden') {
-            Object.keys(el.maskStyle).forEach(property = > {
+            Object.keys(el.maskStyle).forEach(property => {
                 el.mask.style[property] = el.maskStyle[property];
         })
             ;
@@ -91,7 +91,7 @@ loadingDirective.install = Vue =
             el.domVisible = true;
 
             parent.appendChild(el.mask);
-            Vue.nextTick(() = > {
+            Vue.nextTick(() => {
                 if(el.instance.hiding
         )
             {

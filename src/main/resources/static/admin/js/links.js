@@ -82,7 +82,7 @@ var vm = new Vue({
         },
         //条件查询
         search(pageCode, pageSize) {
-            this.$http.post('/links/findByPage?pageSize=' + pageSize + '&pageCode=' + pageCode, this.searchEntity).then(result = > {
+            this.$http.post('/links/findByPage?pageSize=' + pageSize + '&pageCode=' + pageCode, this.searchEntity).then(result => {
                 console.log(result);
             this.entity.links = result.body.rows;
             this.pageConf.totalPage = result.body.total;
@@ -112,9 +112,9 @@ var vm = new Vue({
                 cancelButtonText: '取消',
                 type: 'warning',
                 center: true
-            }).then(() = > {
+            }).then(() => {
                 //调用删除的接口(这里必须将数据转换成JSON格式，不然接收不到值，并且后端要用@RequestBody注解标识)
-                this.$http.post('/links/delete', JSON.stringify(ids)).then(result = > {
+                this.$http.post('/links/delete', JSON.stringify(ids)).then(result => {
                     if(result.body.success
         )
             {
@@ -149,7 +149,7 @@ var vm = new Vue({
         })
             ;
         }).
-            catch(() = > {
+            catch(() => {
                 this.$message({
                     type: 'info',
                     message: '已取消删除',
@@ -175,7 +175,7 @@ var vm = new Vue({
                     duration: 6000
                 });
             } else {
-                this.$http.post('/links/save', JSON.stringify(this.editor.links)).then(result = > {
+                this.$http.post('/links/save', JSON.stringify(this.editor.links)).then(result => {
                     this.reloadList();
                 if (result.body.success) {
                     this.editor.links = {};
@@ -201,7 +201,7 @@ var vm = new Vue({
             this.config.editDialog = true;
             this.editor.links_edit = {}; //清空表单
             //查询当前id对应的数据
-            this.$http.post('/links/findById', {id: id}).then(result = > {
+            this.$http.post('/links/findById', {id: id}).then(result => {
                 this.editor.links_edit = result.body;
         })
             ;
@@ -209,7 +209,7 @@ var vm = new Vue({
         edit() {
             this.config.editDialog = false;
             //查询当前id对应的数据
-            this.$http.post('/links/update', JSON.stringify(this.editor.links_edit)).then(result = > {
+            this.$http.post('/links/update', JSON.stringify(this.editor.links_edit)).then(result => {
                 this.reloadList();
             if (result.body.success) {
                 this.$message({
@@ -231,7 +231,7 @@ var vm = new Vue({
 
         init() {
             //已登录用户名
-            this.$http.get('/admin/getName').then(result = > {
+            this.$http.get('/admin/getName').then(result => {
                 this.config.token.name = result.bodyText;
         })
             ;

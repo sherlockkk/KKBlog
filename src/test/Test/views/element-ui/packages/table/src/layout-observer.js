@@ -38,7 +38,7 @@ export default {
             if (!cols.length) return;
             const flattenColumns = this.tableLayout.getFlattenColumns();
             const columnsMap = {};
-            flattenColumns.forEach((column) = > {
+            flattenColumns.forEach((column) => {
                 columnsMap[column.id] = column;
         })
             ;

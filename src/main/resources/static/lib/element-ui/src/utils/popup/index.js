@@ -2,7 +2,7 @@ import Vue from 'vue';
 import merge from 'element-ui/src/utils/merge';
 import PopupManager from 'element-ui/src/utils/popup/popup-manager';
 import getScrollBarWidth from '../scrollbar-width';
-import {getStyle, addClass, removeClass, hasClass} from '../dom';
+import {addClass, getStyle, hasClass, removeClass} from '../dom';
 
 let idSeed = 1;
 
@@ -80,7 +80,7 @@ export default {
                 if (this._opening) return;
                 if (!this.rendered) {
                     this.rendered = true;
-                    Vue.nextTick(() = > {
+                    Vue.nextTick(() => {
                         this.open();
                 })
                     ;
@@ -109,7 +109,7 @@ export default {
 
             const openDelay = Number(props.openDelay);
             if (openDelay > 0) {
-                this._openTimer = setTimeout(() = > {
+                this._openTimer = setTimeout(() => {
                     this._openTimer = null;
                 this.doOpen(props);
             },
@@ -187,7 +187,7 @@ export default {
             const closeDelay = Number(this.closeDelay);
 
             if (closeDelay > 0) {
-                this._closeTimer = setTimeout(() = > {
+                this._closeTimer = setTimeout(() => {
                     this._closeTimer = null;
                 this.doClose();
             },

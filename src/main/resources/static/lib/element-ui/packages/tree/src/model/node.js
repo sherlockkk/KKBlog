@@ -288,7 +288,7 @@ export default class Node {
 
     removeChildByData(data) {
         let targetNode = null;
-        this.childNodes.forEach(node = > {
+        this.childNodes.forEach(node => {
             if(node.data === data
     )
         {
@@ -319,7 +319,7 @@ export default class Node {
         ;
 
         if (this.shouldLoadData()) {
-            this.loadData((data) = > {
+            this.loadData((data) => {
                 if(data instanceof Array
         )
             {
@@ -338,7 +338,7 @@ export default class Node {
     }
 
     doCreateChildren(array, defaultProps = {}) {
-        array.forEach((item) = > {
+        array.forEach((item) => {
             this.insertChild(objectAssign({data: item}, defaultProps), undefined, true);
     })
         ;
@@ -401,7 +401,7 @@ export default class Node {
 
             if (this.shouldLoadData()) {
                 // Only work on lazy load data.
-                this.loadData(() = > {
+                this.loadData(() => {
                     handleDescendants();
                 reInitChecked(this);
             },
@@ -448,14 +448,14 @@ export default class Node {
 
     updateChildren() {
         const newData = this.getChildren() || [];
-        const oldData = this.childNodes.map((node) = > node.data
+        const oldData = this.childNodes.map((node) => node.data
     )
         ;
 
         const newDataMap = {};
         const newNodes = [];
 
-        newData.forEach((item, index) = > {
+        newData.forEach((item, index) => {
             if(item[NODE_KEY]
     )
         {
@@ -468,7 +468,7 @@ export default class Node {
     })
         ;
 
-        oldData.forEach((item) = > {
+        oldData.forEach((item) => {
             if(
         !newDataMap[item[NODE_KEY]]
     )
@@ -476,7 +476,7 @@ export default class Node {
     })
         ;
 
-        newNodes.forEach(({index, data}) = > {
+        newNodes.forEach(({index, data}) => {
             this.insertChild({data}, index);
     })
         ;

@@ -1,7 +1,5 @@
 import Vue from 'vue';
-import {
-    PopupManager
-} from 'element-ui/src/utils/popup';
+import {PopupManager} from 'element-ui/src/utils/popup';
 
 const PopperJS = Vue.prototype.$isServer ? function () {
 } : require('./popper');
@@ -110,7 +108,7 @@ export default {
             options.offset = this.offset;
             options.arrowOffset = this.arrowOffset;
             this.popperJS = new PopperJS(reference, popper, options);
-            this.popperJS.onCreate(_ = > {
+            this.popperJS.onCreate(_ => {
                 this.$emit('created', this);
             this.resetTransformOrigin();
             this.$nextTick(this.updatePopper);

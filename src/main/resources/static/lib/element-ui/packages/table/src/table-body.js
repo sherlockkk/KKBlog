@@ -1,5 +1,5 @@
 import {getCell, getColumnByCell, getRowIdentity} from './util';
-import {getStyle, hasClass, addClass, removeClass} from 'element-ui/src/utils/dom';
+import {addClass, getStyle, hasClass, removeClass} from 'element-ui/src/utils/dom';
 import ElCheckbox from 'element-ui/packages/checkbox';
 import ElTooltip from 'element-ui/packages/tooltip';
 import debounce from 'throttle-debounce/debounce';
@@ -28,7 +28,7 @@ export default {
     },
 
     render(h) {
-        const columnsHidden = this.columns.map((column, index) = > this.isColumnHidden(index)
+        const columnsHidden = this.columns.map((column, index) => this.isColumnHidden(index)
     )
         ;
         return (
@@ -40,18 +40,18 @@ export default {
         border = "0" >
             < colgroup >
             {
-                this._l(this.columns, column = > < col name = {column.id}
+                this._l(this.columns, column => < col name = {column.id}
         />)
     }
     <
         /colgroup>
         < tbody >
         {
-            this._l(this.data, (row, $index) = >
+            this._l(this.data, (row, $index) =>
                 [ < tr
             style = {this.rowStyle ? this.getRowStyle(row, $index) : null}
             key = {this.table.rowKey ? this.getKeyOfRow(row, $index) : $index}
-            on-dblclick = {($event) = > this.handleDoubleClick($event, row)
+            on-dblclick = {($event) => this.handleDoubleClick($event, row)
     }
         on - click = {($event) =
     >
@@ -61,14 +61,14 @@ export default {
     >
         this.handleContextMenu($event, row)
     }
-        on - mouseenter = {_ = > this.handleMouseEnter($index)
+        on - mouseenter = {_ => this.handleMouseEnter($index)
     }
-        on - mouseleave = {_ = > this.handleMouseLeave()
+        on - mouseleave = {_ => this.handleMouseLeave()
     }
     class
         = {[this.getRowClass(row, $index)]} >
             {
-                this._l(this.columns, (column, cellIndex) = > {
+                this._l(this.columns, (column, cellIndex) => {
                     const {rowspan, colspan} = this.getSpan(row, column, $index, cellIndex);
         if (!rowspan || !colspan) {
             return '';
@@ -170,7 +170,7 @@ export default {
             const el = this.$el;
             if (!el) return;
             const tr = el.querySelector('tbody').children;
-            const rows = [].filter.call(tr, row = > hasClass(row, 'el-table__row')
+            const rows = [].filter.call(tr, row => hasClass(row, 'el-table__row')
         )
             ;
             const oldRow = rows[oldVal];
@@ -188,7 +188,7 @@ export default {
             if (!el) return;
             const data = this.store.states.data;
             const tr = el.querySelector('tbody').children;
-            const rows = [].filter.call(tr, row = > hasClass(row, 'el-table__row')
+            const rows = [].filter.call(tr, row => hasClass(row, 'el-table__row')
         )
             ;
             const oldRow = rows[data.indexOf(oldVal)];
@@ -196,7 +196,7 @@ export default {
             if (oldRow) {
                 removeClass(oldRow, 'current-row');
             } else {
-                [].forEach.call(rows, row = > removeClass(row, 'current-row')
+                [].forEach.call(rows, row => removeClass(row, 'current-row')
             )
                 ;
             }
@@ -247,7 +247,7 @@ export default {
     },
 
     created() {
-        this.activateTooltip = debounce(50, tooltip = > tooltip.handleShowPopper()
+        this.activateTooltip = debounce(50, tooltip => tooltip.handleShowPopper()
     )
         ;
     },

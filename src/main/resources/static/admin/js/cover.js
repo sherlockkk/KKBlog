@@ -83,7 +83,7 @@ var vm = new Vue({
         },
         //条件查询
         search(pageCode, pageSize) {
-            this.$http.post('/article/findByPage?pageSize=' + pageSize + '&pageCode=' + pageCode).then(result = > {
+            this.$http.post('/article/findByPage?pageSize=' + pageSize + '&pageCode=' + pageCode).then(result => {
                 console.log(result);
             this.entity.article = result.body.rows;
             this.pageConf.totalPage = result.body.total;
@@ -104,11 +104,11 @@ var vm = new Vue({
         //编辑按钮
         editBtn(id) {
             this.config.editDialog = true;
-            this.$http.post('/article/findById', {id: id}).then(result = > {
+            this.$http.post('/article/findById', {id: id}).then(result => {
                 this.entity.editor.id = result.body.id;
             this.entity.editor.titlePic = result.body.titlePic;
 
-            this.config.fileList.forEach(row = > {
+            this.config.fileList.forEach(row => {
                 row.url = result.body.titlePic; //将图片的URL地址赋值给file-list展示出来
         })
             ;
@@ -126,7 +126,7 @@ var vm = new Vue({
                 });
                 return false;
             }
-            this.$http.post('/article/update', JSON.stringify(this.entity.editor)).then(result = > {
+            this.$http.post('/article/update', JSON.stringify(this.entity.editor)).then(result => {
                 this.config.editDialog = false;
             this.reloadList();
             if (result.body.success) {
@@ -206,7 +206,7 @@ var vm = new Vue({
 
         init() {
             //已登录用户名
-            this.$http.get('/admin/getName').then(result = > {
+            this.$http.get('/admin/getName').then(result => {
                 this.config.token.name = result.bodyText;
         })
             ;

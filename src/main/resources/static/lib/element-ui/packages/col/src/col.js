@@ -38,7 +38,7 @@ export default {
             style.paddingRight = style.paddingLeft;
         }
 
-        ['span', 'offset', 'pull', 'push'].forEach(prop = > {
+        ['span', 'offset', 'pull', 'push'].forEach(prop => {
             if(this[prop] || this[prop] === 0
     )
         {
@@ -51,7 +51,7 @@ export default {
     })
         ;
 
-        ['xs', 'sm', 'md', 'lg', 'xl'].forEach(size = > {
+        ['xs', 'sm', 'md', 'lg', 'xl'].forEach(size => {
             if(typeof this[size] === 'number'
     )
         {
@@ -60,7 +60,7 @@ export default {
     else
         if (typeof this[size] === 'object') {
             let props = this[size];
-            Object.keys(props).forEach(prop = > {
+            Object.keys(props).forEach(prop => {
                 classList.push(
                     prop !== 'span'
                         ? `el-col-${size}-${prop}-${props[prop]}`

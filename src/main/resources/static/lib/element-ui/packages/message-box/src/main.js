@@ -117,7 +117,7 @@ const showNextMsg = () =
             } else {
                 delete instance.$slots.default;
             }
-            ['modal', 'showClose', 'closeOnClickModal', 'closeOnPressEscape', 'closeOnHashChange'].forEach(prop = > {
+            ['modal', 'showClose', 'closeOnClickModal', 'closeOnPressEscape', 'closeOnHashChange'].forEach(prop => {
                 if(instance[prop] === undefined
         )
             {
@@ -127,7 +127,7 @@ const showNextMsg = () =
             ;
             document.body.appendChild(instance.$el);
 
-            Vue.nextTick(() = > {
+            Vue.nextTick(() => {
                 instance.visible = true;
         })
             ;
@@ -150,7 +150,7 @@ const MessageBox = function (options, callback) {
     }
 
     if (typeof Promise !== 'undefined') {
-        return new Promise((resolve, reject) = > { // eslint-disable-line
+        return new Promise((resolve, reject) => { // eslint-disable-line
             msgQueue.push({
                 options: merge({}, defaults, MessageBox.defaults, options),
                 callback: callback,

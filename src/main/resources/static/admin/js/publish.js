@@ -61,7 +61,7 @@ new Vue({
             this.entity.article.contentMd = window.markdownContent.getMarkdown(); //给contentMd赋值
             this.entity.article.tags = JSON.stringify(this.config.dynamicTags); //给tags字段赋值
 
-            this.$http.post('/article/save', JSON.stringify(this.entity.article)).then(result = > {
+            this.$http.post('/article/save', JSON.stringify(this.entity.article)).then(result => {
                 window.location.reload();
             if (result.body.success) {
                 this.$message({
@@ -88,9 +88,9 @@ new Vue({
 
         //得到所有的分类列表
         findAllCategory() {
-            this.$http.post('/category/findAll').then(result = > {
+            this.$http.post('/category/findAll').then(result => {
                 this.config.options = [];
-            result.body.forEach(row = > {
+            result.body.forEach(row => {
                 if(row.cName != null
         )
             {
@@ -109,7 +109,7 @@ new Vue({
         },
         showInput() {
             this.config.inputVisible = true;
-            this.$nextTick(_ = > {
+            this.$nextTick(_ => {
                 this.$refs.saveTagInput.$refs.input.focus();
         })
             ;
@@ -142,7 +142,7 @@ new Vue({
 
         init() {
             //已登录用户名
-            this.$http.get('/admin/getName').then(result = > {
+            this.$http.get('/admin/getName').then(result => {
                 this.config.token.name = result.bodyText;
         })
             ;

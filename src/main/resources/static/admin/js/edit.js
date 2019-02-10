@@ -58,7 +58,7 @@ new Vue({
             this.entity.article.contentMd = window.markdownContent.getMarkdown(); //给contentMd赋值
             this.entity.article.tags = JSON.stringify(this.config.dynamicTags); //给tags字段赋值
 
-            this.$http.post('/article/update', JSON.stringify(this.entity.article)).then(result = > {
+            this.$http.post('/article/update', JSON.stringify(this.entity.article)).then(result => {
                 window.location.href = '/admin/article';
             if (result.body.success) {
                 this.$message({
@@ -89,7 +89,7 @@ new Vue({
         },
         showInput() {
             this.config.inputVisible = true;
-            this.$nextTick(_ = > {
+            this.$nextTick(_ => {
                 this.$refs.saveTagInput.$refs.input.focus();
         })
             ;
@@ -122,20 +122,20 @@ new Vue({
 
         init(id) {
             //从url中获取参数查询文章数据
-            this.$http.post('/article/findById', {id: id}).then(result = > {
+            this.$http.post('/article/findById', {id: id}).then(result => {
                 this.entity.article = result.body;
         })
             ;
 
             //从url中获取参数查询文章的标签数据
-            this.$http.post('/article/findTags', {id: id}).then(result = > {
+            this.$http.post('/article/findTags', {id: id}).then(result => {
                 this.config.dynamicTags = result.body;
         })
             ;
 
             //得到所有的分类列表
-            this.$http.post('/category/findAll').then(result = > {
-                result.body.forEach(row = > {
+            this.$http.post('/category/findAll').then(result => {
+                result.body.forEach(row => {
                     if(row.cName != null
         )
             {
@@ -147,7 +147,7 @@ new Vue({
             ;
 
             //已登录用户名
-            this.$http.get('/admin/getName').then(result = > {
+            this.$http.get('/admin/getName').then(result => {
                 this.config.token.name = result.bodyText;
         })
             ;

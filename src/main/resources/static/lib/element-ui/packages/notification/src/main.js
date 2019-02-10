@@ -36,9 +36,9 @@ const Notification = function (options) {
     instance.dom.style.zIndex = PopupManager.nextZIndex();
 
     let verticalOffset = options.offset || 0;
-    instances.filter(item = > item.position === position
+    instances.filter(item => item.position === position
 ).
-    forEach(item = > {
+    forEach(item => {
         verticalOffset += item.$el.offsetHeight + 16;
 })
     ;
@@ -48,8 +48,8 @@ const Notification = function (options) {
     return instance;
 };
 
-['success', 'warning', 'info', 'error'].forEach(type = > {
-    Notification[type] = options = > {
+['success', 'warning', 'info', 'error'].forEach(type => {
+    Notification[type] = options => {
     if(typeof options === 'string' || isVNode(options)
 )
 {
@@ -67,7 +67,7 @@ return Notification(options);
 Notification.close = function (id, userOnClose) {
     let index = -1;
     const len = instances.length;
-    const instance = instances.filter((instance, i) = > {
+    const instance = instances.filter((instance, i) => {
         if(instance.id === id
 )
     {

@@ -1,6 +1,6 @@
 import Popper from 'element-ui/src/utils/vue-popper';
 import debounce from 'throttle-debounce/debounce';
-import {addClass, removeClass, on, off} from 'element-ui/src/utils/dom';
+import {addClass, off, on, removeClass} from 'element-ui/src/utils/dom';
 import {getFirstComponentChild} from 'element-ui/src/utils/vdom';
 import {generateId} from 'element-ui/src/utils/util';
 import Vue from 'vue';
@@ -73,7 +73,7 @@ export default {
             }
         }).$mount();
 
-        this.debounceClose = debounce(200, () = > this.handleClosePopper()
+        this.debounceClose = debounce(200, () => this.handleClosePopper()
     )
         ;
     },
@@ -138,7 +138,7 @@ export default {
             this.$el.setAttribute('tabindex', 0);
             on(this.referenceElm, 'mouseenter', this.show);
             on(this.referenceElm, 'mouseleave', this.hide);
-            on(this.referenceElm, 'focus', () = > {
+            on(this.referenceElm, 'focus', () => {
                 if(
             !this.$slots.default || !this.$slots.default.length
         )
@@ -197,7 +197,7 @@ export default {
         handleShowPopper() {
             if (!this.expectedState || this.manual) return;
             clearTimeout(this.timeout);
-            this.timeout = setTimeout(() = > {
+            this.timeout = setTimeout(() => {
                 this.showPopper = true;
         },
             this.openDelay
@@ -205,7 +205,7 @@ export default {
             ;
 
             if (this.hideAfter > 0) {
-                this.timeoutPending = setTimeout(() = > {
+                this.timeoutPending = setTimeout(() => {
                     this.showPopper = false;
             },
                 this.hideAfter

@@ -105,7 +105,7 @@ export default {
         total > < /total>
     }
         ;
-        const components = layout.split(',').map((item) = > item.trim()
+        const components = layout.split(',').map((item) => item.trim()
     )
         ;
         const rightWrapper =
@@ -117,7 +117,7 @@ export default {
 
         template.children = template.children || [];
         rightWrapper.children = rightWrapper.children || [];
-        components.forEach(compo = > {
+        components.forEach(compo => {
             if(compo === '->'
     )
         {
@@ -234,7 +234,7 @@ export default {
                 on - input = {this.handleChange}
                 disabled = {this.$parent.disabled} >
                     {
-                        this.pageSizes.map(item = >
+                        this.pageSizes.map(item =>
                             < el - option
                         value = {item}
                         label = {item +this.t('el.pagination.pagesize')} >
@@ -277,7 +277,7 @@ export default {
 
             watch: {
                 '$parent.internalPageSize'() {
-                    this.$nextTick(() = > {
+                    this.$nextTick(() => {
                         this.$refs.input.$el.querySelector('input').value = this.$parent.internalCurrentPage;
                 })
                     ;
@@ -420,7 +420,7 @@ export default {
         },
 
         emitChange() {
-            this.$nextTick(() = > {
+            this.$nextTick(() => {
                 if(this.internalCurrentPage !== this.lastEmittedPage || this.userChangePageSize
         )
             {

@@ -7,9 +7,9 @@ export default {
 
     computed: {
         optionsAllDisabled() {
-            return this.options.filter(option = > option.visible
+            return this.options.filter(option => option.visible
         ).
-            every(option = > option.disabled
+            every(option => option.disabled
         )
             ;
         }
@@ -20,7 +20,7 @@ export default {
             if (typeof val === 'number' && val > -1) {
                 this.hoverOption = this.options[val] || {};
             }
-            this.options.forEach(option = > {
+            this.options.forEach(option => {
                 option.hover = this.hoverOption === option;
         })
             ;
@@ -52,7 +52,7 @@ export default {
                     !option.visible) {
                     this.navigateOptions(direction);
                 }
-                this.$nextTick(() = > this.scrollToOption(this.hoverOption)
+                this.$nextTick(() => this.scrollToOption(this.hoverOption)
             )
                 ;
             }
